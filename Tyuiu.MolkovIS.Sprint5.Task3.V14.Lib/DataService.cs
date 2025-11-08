@@ -1,21 +1,22 @@
-﻿using tyuiu.cources.programming.interfaces.Sprint1;
+﻿using tyuiu.cources.programming.interfaces.Sprint5;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Tyuiu.MolkovIS.Sprint5.Task3.V14.Lib
 {
-    public class DataService : ISprint1Task3V14
+    public class DataService : ISprint5Task3V14
     {
-        public double ReverseNumber(double number)
+        public string SaveToFileTextData(int x)
         {
             string path = Path.Combine(Path.GetTempPath(), "OutPutFileTask3.bin");
 
             double result;
 
-            using(BinaryWriter writer = new BinaryWriter(File.Open(path,FileMode.OpenOrCreate)))
+            using (BinaryWriter writer = new BinaryWriter(File.Open(path, FileMode.OpenOrCreate)))
             {
-                result = (4 * Math.Pow(number , 3)) / (Math.Pow(number, 3) - 1);
+                result = (4 * Math.Pow(x, 3)) / (Math.Pow(x, 3) - 1);
                 writer.Write(BitConverter.GetBytes(result));
             }
-            return result;
+            return path;
         }
     }
 }

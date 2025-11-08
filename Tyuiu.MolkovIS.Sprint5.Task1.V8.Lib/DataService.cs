@@ -8,10 +8,7 @@ namespace Tyuiu.MolkovIS.Sprint5.Task1.V8.Lib
         {
             string path = Path.Combine(Path.GetTempPath(), "OutPutFileTask1.txt");
 
-            FileInfo fileInfo = new FileInfo(path);
-            bool fileExists = File.Exists(path);
-
-            if (fileExists)
+            if (File.Exists(path))
             {
                 File.Delete(path);
             }
@@ -21,15 +18,22 @@ namespace Tyuiu.MolkovIS.Sprint5.Task1.V8.Lib
 
             for (int i = startValue; i <= stopValue; i++)
             {
-                y = 4 - i * 2 + (2 + Math.Cos(i)) / (2 * i - 2);
-                stry = Convert.ToString(y);
+                y = Math.Round(4 - 2 * i + (2 + Math.Cos(i)) / (2 * i - 2), 2);
+                if (Double.IsInfinity(y))
+                    stry = "0";
+                else
+                    stry = Convert.ToString(y);
 
-                using(StreamWriter stream = new StreamWriter(path))
+                using(FileStream file = new FileStream(path, FileMode.Append))
                 {
-                    stream.WriteLine(stry);
+                    using(StreamWriter writer = new StreamWriter(file))
+                    {
+                        writer.WriteLine(stry);
+                    }
                 }
             }
             return path;
         }
     }
 }
+

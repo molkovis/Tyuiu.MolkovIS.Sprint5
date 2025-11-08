@@ -17,5 +17,6 @@ internal class Program
         Console.WriteLine("***************************************************************************");
         string res = dataService.SaveToFileTextData(startValue,stopValue);
         Console.WriteLine(res);
+        Console.ReadKey();
     }
 }

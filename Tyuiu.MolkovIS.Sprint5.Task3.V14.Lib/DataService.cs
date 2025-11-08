@@ -13,7 +13,7 @@ namespace Tyuiu.MolkovIS.Sprint5.Task3.V14.Lib
 
             using (BinaryWriter writer = new BinaryWriter(File.Open(path, FileMode.OpenOrCreate), Encoding.UTF8))
             {
-                result = (4 * Math.Pow(x, 3)) / (Math.Pow(x, 3) - 1);
+                result = Math.Round((4 * Math.Pow(x, 3)) / (Math.Pow(x, 3) - 1));
                 writer.Write(BitConverter.GetBytes(result));
             }
             return path;

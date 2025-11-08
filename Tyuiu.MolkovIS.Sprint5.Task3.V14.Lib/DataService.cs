@@ -1,5 +1,5 @@
 ﻿using tyuiu.cources.programming.interfaces.Sprint5;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Text;
 
 namespace Tyuiu.MolkovIS.Sprint5.Task3.V14.Lib
 {
@@ -11,7 +11,7 @@ namespace Tyuiu.MolkovIS.Sprint5.Task3.V14.Lib
 
             double result;
 
-            using (BinaryWriter writer = new BinaryWriter(File.Open(path, FileMode.OpenOrCreate)))
+            using (BinaryWriter writer = new BinaryWriter(File.Open(path, FileMode.OpenOrCreate), Encoding.UTF8))
             {
                 result = (4 * Math.Pow(x, 3)) / (Math.Pow(x, 3) - 1);
                 writer.Write(BitConverter.GetBytes(result));

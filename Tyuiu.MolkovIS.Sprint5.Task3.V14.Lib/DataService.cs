@@ -11,10 +11,10 @@ namespace Tyuiu.MolkovIS.Sprint5.Task3.V14.Lib
 
             double result;
 
-            using (BinaryWriter writer = new BinaryWriter(File.Open(path, FileMode.OpenOrCreate), Encoding.UTF8))
+            using (BinaryWriter writer = new BinaryWriter(File.Open(path, FileMode.OpenOrCreate)))
             {
-                result = Math.Round((4 * Math.Pow(x, 3)) / (Math.Pow(x, 3) - 1));
-                writer.Write(BitConverter.GetBytes(result));
+                result = Math.Round((4 * Math.Pow(x, 3)) / (Math.Pow(x, 3) - 1),3);
+                writer.Write(result);
             }
             return path;
         }

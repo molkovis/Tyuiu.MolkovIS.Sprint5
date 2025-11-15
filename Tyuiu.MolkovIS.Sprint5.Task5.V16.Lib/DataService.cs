@@ -18,10 +18,8 @@ namespace Tyuiu.MolkovIS.Sprint5.Task5.V16.Lib
                 }
             }
 
-            var multiplesOfTen = integerValues.Where(num => num % 10 == 0);
 
-            int maxResult = multiplesOfTen.Max();
-            return maxResult;
+            return integerValues.Max();
         }
 
     }

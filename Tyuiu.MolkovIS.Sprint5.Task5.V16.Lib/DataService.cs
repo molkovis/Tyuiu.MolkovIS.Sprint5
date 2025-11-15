@@ -17,9 +17,18 @@ namespace Tyuiu.MolkovIS.Sprint5.Task5.V16.Lib
                     integerValues.Add(number);
                 }
             }
+            List<int> integerValues10 = new List<int>();
 
 
-            return integerValues.Max();
+            foreach (int integerValue in integerValues)
+            {
+                if (integerValue % 10 == 0)
+                {
+                    integerValues10.Add(integerValue);
+                }
+            }
+
+            return integerValues10.Max();
         }
 
     }

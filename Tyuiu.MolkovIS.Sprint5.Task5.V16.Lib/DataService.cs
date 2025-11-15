@@ -8,27 +8,30 @@ namespace Tyuiu.MolkovIS.Sprint5.Task5.V16.Lib
         {
             string text = File.ReadAllText(path);
             string[] strings = text.Split(" ");
-            List<int> integerValues = new List<int>();
 
-            foreach (string s in strings)
+            int maxNumber = 0;
+            bool isFirst = false;
+
+
+            foreach (string value in strings)
             {
-                if (int.TryParse(s, out int number))
+                if (int.TryParse(value, out int currentNumber))
                 {
-                    integerValues.Add(number);
+                    if (currentNumber % 10 == 0 && currentNumber != 0)
+                    {
+                        if (!isFirst)
+                        {
+                            maxNumber = currentNumber;
+                            isFirst = true;
+                        }
+                        else if (currentNumber > maxNumber)
+                        {
+                            maxNumber = currentNumber;
+                        }
+                    }
                 }
             }
-            List<int> integerValues10 = new List<int>();
-
-
-            foreach (int integerValue in integerValues)
-            {
-                if (integerValue % 10 == 0)
-                {
-                    integerValues10.Add(integerValue);
-                }
-            }
-
-            return integerValues10.Max();
+            return maxNumber;
         }
 
     }
